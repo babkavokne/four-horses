@@ -87,3 +87,76 @@ h1,
 .button.button--black a {
   color: #fff;
 }
+
+.running-line {
+  background-color: #F54932;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.running-line ul {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  animation: running-line 10s linear infinite;
+}
+
+@keyframes running-line {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.running-line:hover .running-line ul {
+  animation-play-state: paused;
+}
+
+.running-line ul li {
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "Merriweather", serif;
+  line-height: 1.1;
+  font-size: 16px;
+}
+
+.running-line__sep {
+  font-size: 15px;
+  color: #fff;
+  padding-bottom: 3px;
+}
+
+.tournament__info {
+  margin-top: 48px;
+}
+
+.tournament__info .wrapper {
+  padding-bottom: 0px;
+  margin-bottom: 44px;
+}
+
+.tournament__text {
+  text-transform: uppercase;
+  font-family: "Merriweather", serif;
+  line-height: 1.35;
+  font-size: 28px;
+}
+
+.tournament__text--red {
+  color: #F54932
+}
+
+.tournament__players {
+  margin: 24px 0;
+}
+
+.tournament__player {
+  margin: 34px 0 24px;
+}

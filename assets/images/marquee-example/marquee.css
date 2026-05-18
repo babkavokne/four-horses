@@ -1,0 +1,76 @@
+/* ========== СТРАНИЦА (только для демо) ========== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f0e6d2;
+    color: #1a1714;
+    line-height: 1.5;
+}
+.page { padding: 40px 24px; max-width: 900px; margin: 0 auto; }
+.page h1 { margin: 0 0 8px; font-size: 28px; }
+.hint { color: #6c5f4d; margin: 24px 0 16px; font-size: 14px; }
+
+
+/* ========== БЕГУЩАЯ СТРОКА ========== */
+
+/* 1. Внешний контейнер — обрезает всё за пределами */
+.marquee {
+    overflow: hidden;            /* без этого лента вылезет наружу */
+    position: relative;
+    width: 100%;
+    background: #e23a2c;
+    color: #fff;
+    padding: 14px 0;
+    border-top: 1.5px solid #1a1714;
+    border-bottom: 1.5px solid #1a1714;
+}
+
+/* 2. Лента — то, что двигается */
+.marquee__track {
+    display: inline-flex;        /* элементы в ряд, ширина по содержимому */
+    align-items: center;
+    gap: 26px;
+    white-space: nowrap;         /* тексты не должны переноситься */
+    will-change: transform;
+    animation: marquee 30s linear infinite;
+    /* duration перезапишется через JS, 30s — фолбэк если JS не сработал */
+}
+
+/* 3. Анимация: трек уезжает влево ровно на половину своей ширины
+   и резко возвращается. Вторая половина = копия первой, шов невидим. */
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* 4. Пауза при наведении (опционально) */
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+/* 5. Внешний вид элементов */
+.marquee__item {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.marquee__sep {
+    font-size: 8px;
+    opacity: 0.9;
+}
+
+/* 6. Тёмный вариант — пример модификатора */
+.marquee--dark {
+    background: #1a1714;
+    color: #f0e6d2;
+    margin-top: 24px;
+}
+
+/* 7. Уважаем prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+        animation: none;
+    }
+}

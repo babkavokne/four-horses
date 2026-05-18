@@ -45,18 +45,29 @@
       <div class="running-line">
         <ul>
           <li class="running-line__item">Дело помощи утопающим — дело рук самих утопающих!</li>
+          <span class="running-line__sep" aria-hidden="true">●</span>
           <li class="running-line__item">Шахматы двигают вперёд не только культуру, но и экономику!</li>
+          <span class="running-line__sep" aria-hidden="true">●</span>
           <li class="running-line__item">Лёд тронулся, господа присяжные заседатели!</li>
+          <span class="running-line__sep" aria-hidden="true">●</span>
         </ul>
       </div>
 
       <main class="tournament">
         <div class="tournament__info">
-          <p>Чтобы поддержать Международный васюкинский турнир</p>
-          <img src="./assets/images/players-mb.png" alt="group of players">
-          <p>посетите лекцию на тему: <span class="">«Плодотворная дебютная идея»</span></p>
-          <img src="./assets/images/player-mb.png" alt="group of players">
-          <p>и Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О. Бендера</p>
+          <div class="wrapper">
+            <p class="tournament__text">Чтобы поддержать Международный васюкинский турнир</p>
+            <img src="./assets/images/players-mb.png" alt="group of players" class="tournament__players">
+            <p class="tournament__text">посетите лекцию на тему: <span
+                class="tournament__text tournament__text--red">«Плодотворная
+                дебютная идея»</span></p>
+            <img src="./assets/images/player-mb.png" alt="group of players" class="tournament__player">
+            <p class="tournament__text">и Сеанс <span class="tournament__text tournament__text--red">одновременной игры
+                в шахматы
+                на 160 досках</span>
+              гроссмейстера
+              О. Бендера</p>
+          </div>
         </div>
 
         <div class="tournament__summary">
@@ -235,6 +246,8 @@
       </footer>
     </section>
   </article>
+
+  <script src="./scripts/carousel.js"></script>
 </body>
 
 </html>

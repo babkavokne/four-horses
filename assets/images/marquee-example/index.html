@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бегущая строка — рабочий пример</title>
+    <link rel="stylesheet" href="marquee.css">
+</head>
+<body>
+
+    <main class="page">
+        <h1>Бегущая строка</h1>
+        <p class="hint">Поресайзи окно — лента сама пересчитает количество копий.<br>
+        Наведи курсор — анимация поставится на паузу.</p>
+
+        <!-- Бегущая строка №1 — короткий набор, на широком экране нужны копии -->
+        <div class="marquee">
+            <div class="marquee__track">
+                <span class="marquee__item">Дело помощи утопающим — дело рук самих утопающих!</span>
+                <span class="marquee__sep" aria-hidden="true">●</span>
+                <span class="marquee__item">Шахматы двигают вперёд не только культуру, но и экономику!</span>
+                <span class="marquee__sep" aria-hidden="true">●</span>
+                <span class="marquee__item">Лёд тронулся, господа присяжные заседатели!</span>
+                <span class="marquee__sep" aria-hidden="true">●</span>
+            </div>
+        </div>
+
+        <p class="hint">Несколько строк на странице работают без правок скрипта:</p>
+
+        <!-- Бегущая строка №2 — другой стиль, второй цвет -->
+        <div class="marquee marquee--dark">
+            <div class="marquee__track">
+                <span class="marquee__item">Новости</span>
+                <span class="marquee__sep" aria-hidden="true">◆</span>
+                <span class="marquee__item">Курсы валют</span>
+                <span class="marquee__sep" aria-hidden="true">◆</span>
+                <span class="marquee__item">Расписание</span>
+                <span class="marquee__sep" aria-hidden="true">◆</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="marquee.js"></script>
+</body>
+</html>
