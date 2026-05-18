@@ -160,3 +160,59 @@ h1,
 .tournament__player {
   margin: 34px 0 24px;
 }
+
+.tournament__summary-item {
+  font-weight: 600;
+}
+
+.tournament__summary .wrapper {
+  padding-bottom: 0;
+  margin-bottom: 120px;
+}
+
+.tournament__summary-item:not(:last-child) {
+  border-bottom: 2px solid #d0d0d0;
+  font-size: 20px;
+  padding-bottom: 16px;
+}
+
+.tournament__summary-item span {
+  color: #313131;
+  opacity: 70%;
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.tournament__summary-item .tournament__summary-payment {
+  display: inline;
+}
+
+.tournament__summary-item:not(:first-child) {
+  margin-top: 16px;
+}
+
+.tournament__summary-item .tournament__summary-span--breakthrough {
+  position: relative;
+  display: inline;
+  font-weight: 600;
+  opacity: 100%;
+}
+
+.tournament__summary-span--breakthrough:before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  left: 0;
+  bottom: 10px;
+  background-color: red;
+}
+
+.tournament__summary-footer {
+  margin-top: 40px;
+  font-family: "Golos Text", sans-serif;
+  font-size: 18px;
+  color: #3057A2;
+}
