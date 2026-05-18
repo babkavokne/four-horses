@@ -104,131 +104,156 @@
         </div>
 
         <div class="tournament__stages">
-          <h2>Этапы преображения Васюков <span>Будущие источники обогащения васюкинцев</span></h2>
-          <img src="./assets/images/plane-mb.png" alt="Vintage plain">
+          <div class="wrapper">
+            <h2 class="tournament__stages-header">Этапы преображения Васюков</h2>
+            <span class="tournament__stages-subheader">Будущие источники обогащения васюкинцев</span>
+            <img src="./assets/images/plane-mb.png" alt="Vintage-plain" class="tournament__stages-plain">
 
-          <div class="carousel">
-            <div class="carousel__cards">
-              <div class="carousel__card">
-                <div class="carousel__item">
-                  <span>1</span>
-                  <p>Строительство железнодорожной магистрали Москва-Васюки</p>
-                </div>
-                <div class="carousel__item">
-                  <span>2</span>
-                  <p>Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</p>
-                </div>
-              </div>
-              <div class="carousel__card">
-                <div class="carousel__item">
-                  <span>3</span>
-                  <p>Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры,
-                    шоколадных конфет</p>
-                </div>
-              </div>
-              <div class="carousel__card">
-                <div class="carousel__item">
-                  <span>4</span>
-                  <p>Строительство дворца для турнира</p>
-                </div>
-                <div class="carousel__item">
-                  <span>5</span>
-                  <p>Размещение гаражей для гостевого автотранспорта</p>
-                </div>
-              </div>
-              <div class="carousel__card">
-                <div class="carousel__item">
-                  <span>6</span>
-                  <p>Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
-                </div>
-              </div>
-              <div class="carousel__card">
-                <div class="carousel__item">
-                  <span>7</span>
-                  <p>Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей
-                    во все концы света, включая Лос-Анжелос и Мельбурн</p>
-                </div>
-              </div>
-            </div>
+            <div class="carousel" id="carousel">
+              <div class="carousel__viewport">
+                <div class="carousel__cards" id="track">
+                  <div class="carousel__card">
+                    <div class="carousel__item">
+                      <span>1</span>
+                      <p>Строительство железнодорожной магистрали Москва-Васюки</p>
+                    </div>
 
-            <div class="carousel__navigation">
-              <div class="carousel__previous"><img src="./assets/icons/arrow.svg" alt="arrow-left"></div>
-              <div class="carousel__buttons"></div>
-              <div class="carousel__next"><img src="./assets/icons/arrow.svg" alt="arrow-right"></div>
+                    <div class="carousel__item">
+                      <span>2</span>
+                      <p>Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</p>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card">
+                    <div class="carousel__item">
+                      <span>3</span>
+                      <p>Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов,
+                        икры,
+                        шоколадных конфет</p>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card">
+                    <div class="carousel__item">
+                      <span>4</span>
+                      <p>Строительство дворца для турнира</p>
+                    </div>
+
+                    <div class="carousel__item">
+                      <span>5</span>
+                      <p>Размещение гаражей для гостевого автотранспорта</p>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card">
+                    <div class="carousel__item">
+                      <span>6</span>
+                      <p>Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card">
+                    <div class="carousel__item">
+                      <span>7</span>
+                      <p>Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей
+                        во все концы света, включая Лос-Анжелос и Мельбурн</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel__navigation">
+                  <div class="carousel__arrow carousel__arrow--previous"><img src="./assets/icons/arrow.svg"
+                      alt="arrow-left" id="prevBtn"></div>
+                  <div class="carousel__buttons" id="indicator"></div>
+                  <div class="carousel__arrow carousel__arrow--next" id="nextBtn"><img src="./assets/icons/arrow.svg"
+                      alt="arrow-right"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="participants">
-          <div class="participants__carousel carousel">
-            <div class="carousel__cards">
-              <div class="carousel__card card">
-                <div class="card__avatar">
-                  <img src="./assets/images/player-avatar.png" alt="player avatar">
-                  <div class="card__name">Хозе-Рауль Капабланка</div>
-                  <div class="card__rank">Чемпион мира по шахматам</div>
-                  <div class="card__more-button">
-                    Подробнее
+          <div class="wrapper">
+            <h2 class="participants-header">Участники турнира</h2>
+            <div class="participants__carousel carousel" id="participants-carousel">
+              <div class="carousel__viewport">
+                <div class="carousel__cards" id="participants-track">
+                  <div class="carousel__card card">
+                    <div class="card__avatar">
+                      <img src="./assets/images/player-avatar.png" alt="player avatar">
+                      <div class="card__name">Хозе-Рауль Капабланка</div>
+                      <div class="card__rank">Чемпион мира по шахматам</div>
+                      <div class="card__more-button">
+                        Подробнее
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="carousel__card card">
-                <div class="card__avatar">
-                  <img src="./assets/images/player-avatar.png" alt="player avatar">
-                  <div class="card__name">Эммануил Ласкер</div>
-                  <div class="card__rank">Чемпион мира по шахматам</div>
-                  <div class="card__more-button">
-                    Подробнее
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__card card">
-                <div class="card__avatar">
-                  <img src="./assets/images/player-avatar.png" alt="player avatar">
-                  <div class="card__name">Александр Алехин</div>
-                  <div class="card__rank">Чемпион мира по шахматам</div>
-                  <div class="card__more-button">
-                    Подробнее
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__card card">
-                <div class="card__avatar">
-                  <img src="./assets/images/player-avatar.png" alt="player avatar">
-                  <div class="card__name">Арон Нимцович</div>
-                  <div class="card__rank">Чемпион мира по шахматам</div>
-                  <div class="card__more-button">
-                    Подробнее
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__card card">
-                <div class="card__avatar">
-                  <img src="./assets/images/player-avatar.png" alt="player avatar">
-                  <div class="card__name">Рихард Рети</div>
-                  <div class="card__rank">Чемпион мира по шахматам</div>
-                  <div class="card__more-button">
-                    Подробнее
-                  </div>
-                </div>
-              </div>
-              <div class="carousel__card card">
-                <div class="card__avatar">
-                  <img src="./assets/images/player-avatar.png" alt="player avatar">
-                  <div class="card__name">Остап Бендер</div>
-                  <div class="card__rank">Гроссмейстер</div>
-                  <div class="card__more-button">
-                    Подробнее
-                  </div>
-                </div>
-              </div>
-            </div>
 
+                  <div class="carousel__card card">
+                    <div class="card__avatar">
+                      <img src="./assets/images/player-avatar.png" alt="player avatar">
+                      <div class="card__name">Эммануил Ласкер</div>
+                      <div class="card__rank">Чемпион мира по шахматам</div>
+                      <div class="card__more-button">
+                        Подробнее
+                      </div>
+                    </div>
+                  </div>
 
-            <div class="carousel__navigation">
-              <div class="carousel__previous"><img src="./assets/icons/arrow.svg" alt="arrow-left"></div>
-              <div class="carousel__counts"></div>
-              <div class="carousel__next"><img src="./assets/icons/arrow.svg" alt="arrow-right"></div>
+                  <div class="carousel__card card">
+                    <div class="card__avatar">
+                      <img src="./assets/images/player-avatar.png" alt="player avatar">
+                      <div class="card__name">Александр Алехин</div>
+                      <div class="card__rank">Чемпион мира по шахматам</div>
+                      <div class="card__more-button">
+                        Подробнее
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card card">
+                    <div class="card__avatar">
+                      <img src="./assets/images/player-avatar.png" alt="player avatar">
+                      <div class="card__name">Арон Нимцович</div>
+                      <div class="card__rank">Чемпион мира по шахматам</div>
+                      <div class="card__more-button">
+                        Подробнее
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card card">
+                    <div class="card__avatar">
+                      <img src="./assets/images/player-avatar.png" alt="player avatar">
+                      <div class="card__name">Рихард Рети</div>
+                      <div class="card__rank">Чемпион мира по шахматам</div>
+                      <div class="card__more-button">
+                        Подробнее
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="carousel__card card">
+                    <div class="card__avatar">
+                      <img src="./assets/images/player-avatar.png" alt="player avatar">
+                      <div class="card__name">Остап Бендер</div>
+                      <div class="card__rank">Гроссмейстер</div>
+                      <div class="card__more-button">
+                        Подробнее
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel__navigation">
+                <div class="carousel__previous"><img src="./assets/icons/arrow.svg" alt="arrow-left"
+                    id="participants-prevBtn"></div>
+                <div class="carousel__indicator" id="participants-indicator"></div>
+                <div class="carousel__next"><img src="./assets/icons/arrow.svg" alt="arrow-right"
+                    id="participants-nextBtn"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -249,6 +274,7 @@
     </section>
   </article>
 
+  <script src="./scripts/running-line.js"></script>
   <script src="./scripts/carousel.js"></script>
 </body>
 

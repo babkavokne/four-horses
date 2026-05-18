@@ -216,3 +216,190 @@ h1,
   font-size: 18px;
   color: #3057A2;
 }
+
+.tournament__stages .wrapper {
+  padding-bottom: 0px;
+  margin-bottom: 120px;
+}
+
+.tournament__stages-header {
+  line-height: 1.1;
+  font-size: 36px;
+  font-family: "Merriweather", serif;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tournament__stages-subheader {
+  display: block;
+  line-height: 1.2;
+  font-size: 18px;
+  color: #3057A2;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  padding-top: 130px;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carousel__cards {
+  white-space: nowrap;
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.carousel__viewport {
+  overflow: hidden;
+}
+
+.tournament__stages .carousel__card {
+  position: relative;
+  padding: 60px 24px 0 20px;
+  height: 300px;
+  display: block;
+  white-space: wrap;
+  flex: 0 0 100%;
+  background: url('../assets/images/Cooper\ Union\ Stamp\ Paper.png') center no-repeat;
+}
+
+.tournament__stages .carousel__card::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/bg-dt.png');
+  object-fit: cover;
+  mix-blend-mode: color-burn;
+  opacity: 35%;
+}
+
+.carousel__item {
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.carousel__item span {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 50%;
+  min-width: 36px;
+  height: 36px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.carousel__card .carousel__item:not(:last-child) {
+  margin-bottom: 28px;
+}
+
+.tournament__stages-plain {
+  position: absolute;
+  z-index: 2;
+}
+
+.carousel__navigation {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__arrow {
+  width: 36px;
+  height: 36px;
+  background-color: #313131;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.carousel__arrow--next img {
+  transform: rotate(180deg);
+}
+
+.carousel__buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #d2d2d7;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.carousel__dot:hover {
+  background: #a1a1a6;
+}
+
+.carousel__dot--active {
+  background: #1d1d1f;
+  transform: scale(1.3);
+}
+
+.carousel__arrow:hover:not(:disabled) {
+  background: #424245;
+}
+
+.carousel__arrow:disabled {
+  background: #d2d2d7;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (min-width: 600px) {
+  .carousel__card {
+    flex: 0 0 50%;
+  }
+
+  .carousel__arrow {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 960px) {
+  .carousel__card {
+    flex: 0 0 33.3333%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel__card {
+    flex: 0 0 25%;
+  }
+}
+
+.participants__carousel.carousel {
+  padding-top: 40px;
+}
+
+.participants-header {
+  font-size: 36px;
+  font-family: "Merriweather", serif;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
