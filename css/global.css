@@ -238,7 +238,8 @@ h1,
   margin-bottom: 20px;
 }
 
-.carousel {
+.carousel,
+.participants__carousel {
   padding-top: 130px;
   position: relative;
   max-width: 1200px;
@@ -246,27 +247,36 @@ h1,
 }
 
 .carousel__cards {
-  white-space: nowrap;
   display: flex;
-  transition: transform 0.4s ease;
   will-change: transform;
+  /* transition контролируется в JS — не задавать здесь */
 }
 
 .carousel__viewport {
   overflow: hidden;
 }
 
+/* Базовый размер карточки в любой карусели — mobile-first: 1 на странице */
+.carousel__card {
+  flex: 0 0 100%;
+  min-width: 0; /* чтобы flex-basis побеждал контент */
+  box-sizing: border-box;
+}
+
+/* Карточка-слот: только горизонтальный паддинг для зазора между соседями.
+   Внутри живёт .carousel__card-inner с реальным оформлением. */
 .tournament__stages .carousel__card {
+  padding: 0 8px;
+}
+
+.tournament__stages .carousel__card-inner {
   position: relative;
   padding: 60px 24px 0 20px;
   height: 300px;
-  display: block;
-  white-space: wrap;
-  flex: 0 0 100%;
   background: url('../assets/images/Cooper\ Union\ Stamp\ Paper.png') center no-repeat;
 }
 
-.tournament__stages .carousel__card::before {
+.tournament__stages .carousel__card-inner::before {
   position: absolute;
   content: "";
   left: 0;
@@ -277,6 +287,7 @@ h1,
   object-fit: cover;
   mix-blend-mode: color-burn;
   opacity: 35%;
+  pointer-events: none;
 }
 
 .carousel__item {
@@ -327,17 +338,40 @@ h1,
   cursor: pointer;
   color: #fff;
   flex-shrink: 0;
+  user-select: none;
   transition: background 0.2s, opacity 0.2s;
+}
+
+.carousel__arrow img {
+  display: block;
+  max-width: 60%;
+  max-height: 60%;
+  pointer-events: none; /* клики проваливаются на родителя */
 }
 
 .carousel__arrow--next img {
   transform: rotate(180deg);
 }
 
-.carousel__buttons {
+.carousel__arrow:hover {
+  background: #424245;
+}
+
+/* Используем .is-disabled, потому что обёртки стрелок — <div>, а не <button> */
+.carousel__arrow.is-disabled {
+  background: #d2d2d7;
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.carousel__indicator {
   display: flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  min-height: 20px;
 }
 
 .carousel__dot {
@@ -360,19 +394,20 @@ h1,
   transform: scale(1.3);
 }
 
-.carousel__arrow:hover:not(:disabled) {
-  background: #424245;
+.carousel__counter {
+  font-variant-numeric: tabular-nums;
+  font-size: 16px;
+  color: #313131;
+  font-weight: 500;
 }
 
-.carousel__arrow:disabled {
-  background: #d2d2d7;
-  cursor: not-allowed;
-  opacity: 0.6;
+.carousel__counter b {
+  font-weight: 700;
 }
 
 @media (min-width: 600px) {
   .carousel__card {
-    flex: 0 0 50%;
+    flex-basis: 50%;
   }
 
   .carousel__arrow {
@@ -383,13 +418,13 @@ h1,
 
 @media (min-width: 960px) {
   .carousel__card {
-    flex: 0 0 33.3333%;
+    flex-basis: 33.3333%;
   }
 }
 
 @media (min-width: 1200px) {
   .carousel__card {
-    flex: 0 0 25%;
+    flex-basis: 25%;
   }
 }
 
@@ -402,4 +437,49 @@ h1,
   font-family: "Merriweather", serif;
   line-height: 1.1;
   text-transform: uppercase;
+}
+
+.participants__carousel .carousel__card {
+  /* min-width убран — иначе flex-basis ниже 335px не сработает */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+  text-align: center;
+}
+
+.participants__carousel .card__avatar img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.participants__carousel .card__name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.participants__carousel .card__rank {
+  font-size: 16px;
+  color: #3057A2;
+  margin-bottom: 16px;
+}
+
+.participants__carousel .card__more-button {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 66px;
+  background: #fff;
+  border: 1px solid #d2d2d7;
+}
+
+.participants__carousel .card__more-button:hover {
+  background: #f5f5f7;
+}
+
+.card__avatar {
+  margin-bottom: 28px;
 }

@@ -1,21 +1,44 @@
 /**
+ * Карусель карточек
+ *
  * Опции:
- *   breakpoints — [{ minWidth, perPage }, ...]
- *   loop        — bool, бесконечная карусель (клоны страниц по краям)
- *   autoplay    — bool, автопереключение
- *   interval    — мс, период автопереключения
- *   indicator   — 'dots' | 'counter'
- *   ids         — {string: string}, id элементов, по которым определяем основные элементы каруселей
+ *   trackSelector     — селектор контейнера с карточками внутри root
+ *   prevSelector      — селектор кнопки "назад"
+ *   nextSelector      — селектор кнопки "вперёд"
+ *   indicatorSelector — селектор контейнера индикатора (точки / счётчик)
+ *   breakpoints       — [{ minWidth, perPage }, ...] карточек на страницу
+ *   loop              — bool, бесконечная карусель (клоны страниц по краям)
+ *   autoplay          — bool, автопереключение
+ *   interval          — мс, период автопереключения
+ *   duration          — мс, длительность анимации сдвига
+ *   indicator         — 'dots' | 'counter'
  */
 class Carousel {
   constructor(rootEl, options = {}) {
+    if (!rootEl) throw new Error('Carousel: rootEl is required')
     this.root = rootEl
-    this.track = rootEl.querySelector(`${options.ids?.track || '#track'}`)
-    this.prevBtn = rootEl.querySelector(`${options.ids?.prevBtn || '#prevBtn'}`)
-    this.nextBtn = rootEl.querySelector(`${options.ids?.nextBtn || '#nextBtn'}`)
-    this.indicatorEl = rootEl.querySelector(
-      `${options.ids?.indicator || '#indicator'}`,
-    )
+
+    const trackSel =
+      options.trackSelector || '.carousel__cards, .carousel__track'
+    const prevSel =
+      options.prevSelector || '.carousel__arrow--previous, .carousel__previous'
+    const nextSel =
+      options.nextSelector || '.carousel__arrow--next, .carousel__next'
+    const indSel = options.indicatorSelector || '.carousel__indicator'
+
+    this.track = rootEl.querySelector(trackSel)
+    this.prevBtn = rootEl.querySelector(prevSel)
+    this.nextBtn = rootEl.querySelector(nextSel)
+    this.indicatorEl = rootEl.querySelector(indSel)
+
+    if (!this.track)
+      throw new Error(`Carousel: track not found by "${trackSel}"`)
+    if (!this.prevBtn)
+      throw new Error(`Carousel: prev not found by "${prevSel}"`)
+    if (!this.nextBtn)
+      throw new Error(`Carousel: next not found by "${nextSel}"`)
+    if (!this.indicatorEl)
+      throw new Error(`Carousel: indicator not found by "${indSel}"`)
 
     this.breakpoints = options.breakpoints || [
       { minWidth: 0, perPage: 1 },
@@ -27,16 +50,17 @@ class Carousel {
     this.loop = options.loop ?? false
     this.autoplay = options.autoplay ?? false
     this.interval = options.interval ?? 4000
+    this.duration = options.duration ?? 400
     this.indicator = options.indicator ?? 'dots'
 
     this.currentPage = 0
     this.cardsPerPage = 1
     this.totalPages = 1
-    this.originalCards = []
+    this.originalCards = Array.from(this.track.children)
     this._autoplayId = null
     this._isAnimating = false
 
-    this.originalCards = Array.from(this.track.children)
+    this.track.style.willChange = 'transform'
 
     this._bindEvents()
   }
@@ -57,7 +81,6 @@ class Carousel {
     )
 
     this.track.innerHTML = ''
-
     const canLoop = this.loop && this.totalPages > 1
 
     if (canLoop) {
@@ -65,7 +88,6 @@ class Carousel {
       for (let i = lastPageStart; i < this.originalCards.length; i++) {
         this.track.appendChild(this.originalCards[i].cloneNode(true))
       }
-
       const tailCount = this.originalCards.length - lastPageStart
       for (let i = 0; i < this.cardsPerPage - tailCount; i++) {
         this.track.appendChild(this.originalCards[i].cloneNode(true))
@@ -91,9 +113,11 @@ class Carousel {
     return this.loop && this.totalPages > 1 ? page + 1 : page
   }
 
-  _setTransform(animated) {
-    this.track.classList.toggle('carousel__track--animated', animated)
-    this.track.style.transform = `translateX(-${this._trackPos(this.currentPage) * 100}%)`
+  _move(trackPos, animated) {
+    this.track.style.transition = animated
+      ? `transform ${this.duration}ms ease`
+      : 'none'
+    this.track.style.transform = `translateX(-${trackPos * 100}%)`
   }
 
   _renderIndicator() {
@@ -108,6 +132,7 @@ class Carousel {
 
     for (let i = 0; i < this.totalPages; i++) {
       const dot = document.createElement('button')
+      dot.type = 'button'
       dot.className = 'carousel__dot'
       dot.setAttribute('aria-label', `Страница ${i + 1}`)
       dot.addEventListener('click', () => {
@@ -120,11 +145,14 @@ class Carousel {
 
   _updateUI() {
     if (this.loop && this.totalPages > 1) {
-      this.prevBtn.disabled = false
-      this.nextBtn.disabled = false
+      this.prevBtn.classList.remove('is-disabled')
+      this.nextBtn.classList.remove('is-disabled')
     } else {
-      this.prevBtn.disabled = this.currentPage === 0
-      this.nextBtn.disabled = this.currentPage >= this.totalPages - 1
+      this.prevBtn.classList.toggle('is-disabled', this.currentPage === 0)
+      this.nextBtn.classList.toggle(
+        'is-disabled',
+        this.currentPage >= this.totalPages - 1,
+      )
     }
 
     if (this.indicator === 'counter') {
@@ -145,19 +173,14 @@ class Carousel {
   _recalc() {
     this._rebuildTrack()
     this._renderIndicator()
-    this._setTransform(false)
+    this._move(this._trackPos(this.currentPage), false)
     this._updateUI()
   }
 
   goTo(index) {
     this.currentPage = Math.max(0, Math.min(index, this.totalPages - 1))
-    this._setTransform(true)
+    this._move(this._trackPos(this.currentPage), true)
     this._updateUI()
-  }
-
-  _moveTo(trackPos, animated) {
-    this.track.classList.toggle('carousel__track--animated', animated)
-    this.track.style.transform = `translateX(-${trackPos * 100}%)`
   }
 
   next() {
@@ -166,7 +189,7 @@ class Carousel {
     if (!this.loop || this.totalPages <= 1) {
       if (this.currentPage < this.totalPages - 1) {
         this.currentPage++
-        this._setTransform(true)
+        this._move(this._trackPos(this.currentPage), true)
         this._updateUI()
       }
       return
@@ -174,11 +197,11 @@ class Carousel {
 
     if (this.currentPage === this.totalPages - 1) {
       this._isAnimating = true
-      this._moveTo(this.totalPages + 1, true)
+      this._move(this.totalPages + 1, true)
       const onEnd = () => {
         this.track.removeEventListener('transitionend', onEnd)
         this.currentPage = 0
-        this._moveTo(this._trackPos(0), false)
+        this._move(this._trackPos(0), false)
         void this.track.offsetWidth
         this._isAnimating = false
         this._updateUI()
@@ -186,7 +209,7 @@ class Carousel {
       this.track.addEventListener('transitionend', onEnd)
     } else {
       this.currentPage++
-      this._setTransform(true)
+      this._move(this._trackPos(this.currentPage), true)
       this._updateUI()
     }
   }
@@ -197,7 +220,7 @@ class Carousel {
     if (!this.loop || this.totalPages <= 1) {
       if (this.currentPage > 0) {
         this.currentPage--
-        this._setTransform(true)
+        this._move(this._trackPos(this.currentPage), true)
         this._updateUI()
       }
       return
@@ -205,11 +228,11 @@ class Carousel {
 
     if (this.currentPage === 0) {
       this._isAnimating = true
-      this._moveTo(0, true)
+      this._move(0, true)
       const onEnd = () => {
         this.track.removeEventListener('transitionend', onEnd)
         this.currentPage = this.totalPages - 1
-        this._moveTo(this._trackPos(this.totalPages - 1), false)
+        this._move(this._trackPos(this.totalPages - 1), false)
         void this.track.offsetWidth
         this._isAnimating = false
         this._updateUI()
@@ -217,7 +240,7 @@ class Carousel {
       this.track.addEventListener('transitionend', onEnd)
     } else {
       this.currentPage--
-      this._setTransform(true)
+      this._move(this._trackPos(this.currentPage), true)
       this._updateUI()
     }
   }
@@ -282,20 +305,35 @@ class Carousel {
   init() {
     this._recalc()
     this.startAutoplay()
+    return this
   }
 }
 
-const carousel = new Carousel(document.getElementById('carousel'))
-carousel.init()
+document.addEventListener('DOMContentLoaded', () => {
+  const stages = document.getElementById('carousel')
+  if (stages) {
+    new Carousel(stages, {
+      trackSelector: '#track',
+      prevSelector: '#prevBtn',
+      nextSelector: '#nextBtn',
+      indicatorSelector: '#indicator',
+      loop: false,
+      autoplay: false,
+      indicator: 'dots',
+    }).init()
+  }
 
-// const participantsCarousel = new Carousel(
-//   document.getElementById('participants-carousel', {
-//     ids: {
-//       track: '#participants-track',
-//       prevBtn: '#participants-prevBtn',
-//       nextBtn: '#participants-nextBtn',
-//       indicator: '#participants-indicator',
-//     },
-//   }),
-// )
-// participantsCarousel.init()
+  const participants = document.getElementById('participants-carousel')
+  if (participants) {
+    new Carousel(participants, {
+      trackSelector: '#participants-track',
+      prevSelector: '#participants-prevBtn',
+      nextSelector: '#participants-nextBtn',
+      indicatorSelector: '#participants-indicator',
+      loop: true,
+      autoplay: true,
+      interval: 4000,
+      indicator: 'counter',
+    }).init()
+  }
+})
