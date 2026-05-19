@@ -56,57 +56,64 @@
       <main class="tournament">
         <div class="tournament__info">
           <div class="wrapper">
-            <p class="tournament__text">Чтобы поддержать Международный васюкинский турнир</p>
-            <img src="./assets/images/players-mb.png" alt="group of players" class="tournament__players">
-            <p class="tournament__text">посетите лекцию на тему: <span
-                class="tournament__text tournament__text--red">«Плодотворная
-                дебютная идея»</span></p>
-            <img src="./assets/images/player-mb.png" alt="group of players" class="tournament__player">
-            <p class="tournament__text">и Сеанс <span class="tournament__text tournament__text--red">одновременной игры
-                в шахматы
-                на 160 досках</span>
-              гроссмейстера
-              О. Бендера</p>
-          </div>
-        </div>
-
-        <div class="tournament__summary">
-          <div class="wrapper">
-            <div class="tournament__summary-item">
-              <span>Место проведения:</span>
-              Клуб «Картонажник»
+            <div class="tournament__players-wrapper">
+              <p class="tournament__text">Чтобы поддержать Международный васюкинский турнир</p>
+              <img src="./assets/images/players-mb.png" alt="group of players" class="tournament__players">
+              <p class="tournament__text">посетите лекцию на тему: <span
+                  class="tournament__text tournament__text--red">«Плодотворная
+                  дебютная идея»</span></p>
             </div>
+            <div class="tournament__player-wrapper">
+              <img src="./assets/images/player-mb.png" alt="group of players" class="tournament__player">
 
-            <div class="tournament__summary-item">
-              <span>Дата и время мероприятия:</span>
-              22 июня 1927 г. в 18:00
+              <p class="tournament__text">и Сеанс <span class="tournament__text tournament__text--red">одновременной
+                  игры
+                  в шахматы
+                  на 160 досках</span>
+                гроссмейстера
+                О. Бендера</p>
+
+              <div class="tournament__summary">
+                <div class="tournament__summary-item">
+                  <span class="tournament__summary-label">Место проведения:</span>
+                  <span class="tournament__summary-value">Клуб «Картонажник»</span>
+                </div>
+
+                <div class="tournament__summary-item">
+                  <span class="tournament__summary-label">Дата и время мероприятия:</span>
+                  <span class="tournament__summary-value">22 июня 1927 г. в 18:00</span>
+                </div>
+
+                <div class="tournament__summary-item">
+                  <span class="tournament__summary-label">Стоимость входных билетов:</span>
+                  <span class="tournament__summary-value">20 коп.</span>
+                </div>
+
+                <div class="tournament__summary-item">
+                  <span class="tournament__summary-label tournament__summary-payment">Плата за игру:</span>
+                  <span class="tournament__summary-value">50 коп.</span>
+                </div>
+
+                <div class="tournament__summary-item">
+                  <span class="tournament__summary-label">Взнос на телеграммы:</span>
+                  <span class="tournament__summary-value">
+                    <span class="tournament__summary-span--breakthrough">100 руб.</span> 21 руб. 16 коп.
+                  </span>
+                </div>
+
+                <footer class="tournament__summary-footer">
+                  По всем вопросам обращаться в администрацию к К. Михельсону
+                </footer>
+              </div>
             </div>
-
-            <div class="tournament__summary-item">
-              <span>Стоимость входных билетов:</span>
-              20 коп.
-            </div>
-
-            <div class="tournament__summary-item">
-              <span class="tournament__summary-payment">Плата за игру:</span>
-              50 коп.
-            </div>
-
-            <div class="tournament__summary-item">
-              <span>Взнос на телеграммы:</span>
-              <span class="tournament__summary-span--breakthrough">100 руб.</span> 21 руб. 16 коп.
-            </div>
-
-            <footer class="tournament__summary-footer">
-              По всем вопросам обращаться в администрацию к К. Михельсону
-            </footer>
           </div>
         </div>
 
         <div class="tournament__stages">
           <div class="wrapper">
-            <h2 class="tournament__stages-header">Этапы преображения Васюков</h2>
-            <span class="tournament__stages-subheader">Будущие источники обогащения васюкинцев</span>
+            <h2 class="tournament__stages-header">Этапы преображения Васюков<span
+                class="tournament__stages-subheader">Будущие источники обогащения васюкинцев</span></h2>
+
             <img src="./assets/images/plane-mb.png" alt="Vintage-plain" class="tournament__stages-plain">
 
             <div class="carousel" id="carousel">
@@ -114,12 +121,12 @@
                 <div class="carousel__cards" id="track">
                   <div class="carousel__card">
                     <div class="carousel__card-inner">
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--railway">
                         <span>1</span>
                         <p>Строительство железнодорожной магистрали Москва-Васюки</p>
                       </div>
 
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--hotel">
                         <span>2</span>
                         <p>Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</p>
                       </div>
@@ -128,7 +135,7 @@
 
                   <div class="carousel__card">
                     <div class="carousel__card-inner">
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--radius">
                         <span>3</span>
                         <p>Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов,
                           икры, шоколадных конфет</p>
@@ -138,12 +145,12 @@
 
                   <div class="carousel__card">
                     <div class="carousel__card-inner">
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--plaza">
                         <span>4</span>
                         <p>Строительство дворца для турнира</p>
                       </div>
 
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--garages">
                         <span>5</span>
                         <p>Размещение гаражей для гостевого автотранспорта</p>
                       </div>
@@ -152,7 +159,7 @@
 
                   <div class="carousel__card">
                     <div class="carousel__card-inner">
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--radiostation">
                         <span>6</span>
                         <p>Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
                       </div>
@@ -161,9 +168,10 @@
 
                   <div class="carousel__card">
                     <div class="carousel__card-inner">
-                      <div class="carousel__item">
+                      <div class="carousel__item carousel__item--airport">
                         <span>7</span>
-                        <p>Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей
+                        <p>Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и
+                          дирижаблей
                           во все концы света, включая Лос-Анжелос и Мельбурн</p>
                       </div>
                     </div>
@@ -272,8 +280,9 @@
       </div>
 
       <footer>
-        Все персонажи, события и цитаты являются вымышленными и не принадлежат создателям сайта. С подробностями можно
-        познакомиться в главе XXXIV романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».
+        <p>Все персонажи, события и цитаты являются вымышленными и не принадлежат создателям сайта. С подробностями
+          можно
+          познакомиться в главе XXXIV романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».</p>
       </footer>
     </section>
   </article>

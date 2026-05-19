@@ -66,6 +66,11 @@ h1,
   border-radius: 66px;
   opacity: 90%;
   background-color: #fff;
+  transition: background 0.2s
+}
+
+.button:hover {
+  background-color: #FBCE51;
 }
 
 .button a {
@@ -82,6 +87,11 @@ h1,
   background-color: #1F1F1F;
   margin-bottom: 14px;
   opacity: 1;
+  transition: background 0.2s, border 0.2s
+}
+
+.button.button--black:hover {
+  background-color: #FBCE51;
 }
 
 .button.button--black a {
@@ -133,6 +143,137 @@ h1,
   padding-bottom: 3px;
 }
 
+@media (min-width: 576px) {
+  .header {
+    background: 40% 120% / 150% no-repeat url(../assets/images/bg-mb.png);
+    background-color: #E9DED4;
+  }
+}
+
+@media (min-width: 830px) {
+  .header {
+    background-size: 100%;
+    background-position: center bottom -24px;
+  }
+
+  .tournament__players-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+}
+
+@media (min-width: 1240px) {
+  .wrapper {
+    padding: 26px 72px 72px;
+  }
+
+  .tournament__players-wrapper {
+    display: grid;
+    grid-template-areas: "first players"
+      "last players";
+    justify-content: space-between;
+    column-gap: 64px;
+  }
+
+  .tournament__players-wrapper .tournament__text:first-child {
+    align-self: end;
+    grid-area: first;
+  }
+
+  .tournament__players {
+    grid-area: players;
+  }
+
+  .tournament__players-wrapper .tournament__text:last-child {
+    grid-area: last;
+    align-self: start;
+  }
+
+  .tournament__text {
+    font-size: 36px;
+  }
+
+  .header__logo {
+    width: 245px;
+  }
+
+  .header__content {
+    max-width: 542px;
+  }
+
+  .header__topline {
+    margin-bottom: 62px;
+  }
+
+  .header__header_bottom {
+    text-align: center;
+    display: block;
+  }
+
+  h1,
+  .header__header_bottom {
+    font-size: 60px;
+  }
+
+  .header__description {
+    margin-bottom: 40px;
+  }
+
+  .header__buttons {
+    margin-bottom: 150px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .button {
+    padding: 20px 49px;
+    background-color: transparent;
+    border: 2px solid #1d1d1f;
+    opacity: 100%;
+  }
+
+  .button:hover {
+    background-color: #1f1f1f;
+  }
+
+  .button:hover a {
+    color: #fff;
+  }
+
+  .button a {
+    padding: 0;
+  }
+
+  .button.button--black {
+    margin-bottom: 0;
+  }
+
+  .button.button--black:hover {
+    background-color: #FBCE51;
+    border: 2px solid #FBCE51;
+  }
+
+  .button.button--black a {
+    color: #fff;
+  }
+
+  .running-line {
+    padding: 18px 0;
+  }
+
+  .running-line ul li {
+    font-size: 22px;
+  }
+
+  .running-line__sep {
+    font-size: 15px;
+    color: #fff;
+    padding-bottom: 3px;
+  }
+}
+
 .tournament__info {
   margin-top: 48px;
 }
@@ -147,6 +288,7 @@ h1,
   font-family: "Merriweather", serif;
   line-height: 1.35;
   font-size: 28px;
+  margin-bottom: 44px;
 }
 
 .tournament__text--red {
@@ -176,7 +318,7 @@ h1,
   padding-bottom: 16px;
 }
 
-.tournament__summary-item span {
+.tournament__summary-item .tournament__summary-label {
   color: #313131;
   opacity: 70%;
   display: block;
@@ -184,8 +326,8 @@ h1,
   font-weight: 400;
 }
 
-.tournament__summary-item .tournament__summary-payment {
-  display: inline;
+.tournament__summary-item .tournament__summary-value {
+  display: block;
 }
 
 .tournament__summary-item:not(:first-child) {
@@ -211,13 +353,145 @@ h1,
 }
 
 .tournament__summary-footer {
+  padding: 0;
   margin-top: 40px;
   font-family: "Golos Text", sans-serif;
   font-size: 18px;
   color: #3057A2;
+  background-color: #fff;
+  margin-bottom: 120px;
+}
+
+@media (min-width: 1240px) {
+  .tournament__info {
+    margin-top: 80px;
+  }
+
+  .tournament__player-wrapper .tournament__text {
+    font-size: 36px;
+    grid-area: text;
+    margin-bottom: 60px;
+  }
+
+  .tournament__player-wrapper {
+    display: grid;
+    grid-template-areas: "player text"
+      "player table";
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .tournament__players {
+    margin: 24px 0;
+  }
+
+  .tournament__player {
+    margin: 0;
+    grid-area: player;
+  }
+
+  .tournament__summary {
+    grid-area: table;
+  }
+
+  .tournament__summary .wrapper {
+    margin-bottom: 200px;
+  }
+
+  .tournament__summary-item:not(:last-child) {
+    border-bottom: 2px solid #d0d0d0;
+    font-size: 20px;
+    padding-bottom: 16px;
+  }
+
+  .tournament__summary-value {
+    position: relative;
+  }
+
+  .tournament__summary-value::before {
+    position: absolute;
+    ;
+  }
+
+  .tournament__summary-item:not(:first-child) {
+    margin-top: 16px;
+  }
+
+  .tournament__summary-item .tournament__summary-span--breakthrough {
+    position: relative;
+    display: inline;
+    font-weight: 600;
+    opacity: 100%;
+  }
+
+  .tournament__summary-span--breakthrough:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    left: 0;
+    bottom: 10px;
+    background-color: red;
+  }
+
+  .tournament__summary-footer {
+    margin-top: 40px;
+    font-family: "Golos Text", sans-serif;
+    font-size: 18px;
+    color: #3057A2;
+    background-color: #fff;
+  }
+
+  .tournament__summary-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: baseline;
+    padding: 18px 0;
+    margin: 0;
+    font-size: 20px;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  .tournament__summary-item:not(:first-child) {
+    margin-top: 0;
+  }
+
+  .tournament__summary-item:last-of-type {
+    border-bottom: none;
+  }
+
+  .tournament__summary-item .tournament__summary-label {
+    margin-bottom: 0;
+    opacity: 70%;
+    color: #313131;
+    font-weight: 400;
+  }
+
+
+  .tournament__summary-footer {
+    margin-top: 28px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .tournament__summary-item {
+    position: relative;
+  }
+
+  .tournament__summary-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #d0d0d0;
+  }
 }
 
 .tournament__stages .wrapper {
+  padding-top: 0;
   padding-bottom: 0px;
   margin-bottom: 120px;
 }
@@ -236,6 +510,130 @@ h1,
   font-size: 18px;
   color: #3057A2;
   margin-bottom: 20px;
+  text-transform: none;
+}
+
+@media (min-width: 1240px) {
+  .tournament__stages-header {
+    margin-top: 200px;
+    max-width: 806px;
+    font-size: 54px;
+    margin-bottom: 0;
+  }
+
+  .tournament__stages-subheader {
+    display: inline;
+    max-width: 280px;
+    vertical-align: middle;
+    display: inline-flex;
+    margin-left: 20px;
+  }
+
+  .tournament__stages .carousel {
+    max-width: 100%;
+    padding-top: 50px;
+  }
+
+  .tournament__stages .carousel__navigation {
+    display: none;
+  }
+
+  .tournament__stages .carousel__viewport {
+    overflow: visible;
+  }
+
+  .tournament__stages .carousel__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "railway hotel radius"
+      "plaza garages radius"
+      "radiostation airport airport";
+    gap: 16px;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .tournament__stages .carousel__card,
+  .tournament__stages .carousel__card-inner {
+    display: contents;
+  }
+
+  .carousel__item--railway {
+    grid-area: railway;
+  }
+
+  .carousel__item--hotel {
+    grid-area: hotel;
+  }
+
+  .carousel__item--radius {
+    grid-area: radius;
+  }
+
+  .carousel__item--plaza {
+    grid-area: plaza;
+  }
+
+  .carousel__item--garages {
+    grid-area: garages;
+  }
+
+  .carousel__item--radiostation {
+    grid-area: radiostation;
+  }
+
+  .carousel__item--airport {
+    grid-area: airport;
+  }
+
+  .carousel__item--airport p {
+    max-width: 446px;
+  }
+
+  .tournament__stages .carousel__card {
+    padding: 0;
+  }
+
+  .tournament__stages .carousel__card-inner {
+    height: auto;
+    padding: 0;
+    background: none;
+  }
+
+  .tournament__stages .carousel__item {
+    position: relative;
+    padding: 28px 24px;
+    margin-bottom: 0;
+    background: url('../assets/images/Cooper\ Union\ Stamp\ Paper.png') center / 180% no-repeat;
+  }
+
+  .tournament__stages .carousel__card .carousel__item:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .tournament__stages .carousel__card-inner::before {
+    display: none;
+  }
+
+  .tournament__stages .carousel__item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/images/bg-dt.png');
+    mix-blend-mode: color-burn;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .tournament__stages-plain {
+    right: 0;
+    bottom: 30px;
+    pointer-events: none;
+  }
+
+  .tournament__stages {
+    position: relative;
+  }
 }
 
 .carousel,
@@ -249,22 +647,18 @@ h1,
 .carousel__cards {
   display: flex;
   will-change: transform;
-  /* transition контролируется в JS — не задавать здесь */
 }
 
 .carousel__viewport {
   overflow: hidden;
 }
 
-/* Базовый размер карточки в любой карусели — mobile-first: 1 на странице */
 .carousel__card {
   flex: 0 0 100%;
-  min-width: 0; /* чтобы flex-basis побеждал контент */
+  min-width: 0;
   box-sizing: border-box;
 }
 
-/* Карточка-слот: только горизонтальный паддинг для зазора между соседями.
-   Внутри живёт .carousel__card-inner с реальным оформлением. */
 .tournament__stages .carousel__card {
   padding: 0 8px;
 }
@@ -346,7 +740,7 @@ h1,
   display: block;
   max-width: 60%;
   max-height: 60%;
-  pointer-events: none; /* клики проваливаются на родителя */
+  pointer-events: none;
 }
 
 .carousel__arrow--next img {
@@ -354,10 +748,9 @@ h1,
 }
 
 .carousel__arrow:hover {
-  background: #424245;
+  background-color: #FBCE51;
 }
 
-/* Используем .is-disabled, потому что обёртки стрелок — <div>, а не <button> */
 .carousel__arrow.is-disabled {
   background: #d2d2d7;
   cursor: not-allowed;
@@ -422,12 +815,6 @@ h1,
   }
 }
 
-@media (min-width: 1200px) {
-  .carousel__card {
-    flex-basis: 25%;
-  }
-}
-
 .participants__carousel.carousel {
   padding-top: 40px;
 }
@@ -440,7 +827,6 @@ h1,
 }
 
 .participants__carousel .carousel__card {
-  /* min-width убран — иначе flex-basis ниже 335px не сработает */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -455,15 +841,17 @@ h1,
 }
 
 .participants__carousel .card__name {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
 
 .participants__carousel .card__rank {
-  font-size: 16px;
-  color: #3057A2;
-  margin-bottom: 16px;
+  font-size: 20px;
+  color: #313131;
+  margin-bottom: 20px;
+  opacity: 60%;
 }
 
 .participants__carousel .card__more-button {
@@ -472,14 +860,43 @@ h1,
   font-weight: 500;
   padding: 10px 22px;
   border-radius: 66px;
+  color: #3057A2;
   background: #fff;
-  border: 1px solid #d2d2d7;
+  border: 1px solid #3057A2;
 }
 
 .participants__carousel .card__more-button:hover {
-  background: #f5f5f7;
+  background: #3057A2;
+  color: #fff;
 }
 
 .card__avatar {
   margin-bottom: 28px;
+}
+
+footer {
+  padding: 40px 20px 60px;
+  background-color: #E9DED4;
+}
+
+footer p {
+  color: #313131;
+  opacity: 60%;
+}
+
+@media (min-width: 1240px) {
+  .participants-header {
+    font-size: 54px;
+  }
+
+  .participants .wrapper {
+    position: relative;
+  }
+
+  .participants__carousel .carousel__navigation {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    margin-top: 0;
+  }
 }

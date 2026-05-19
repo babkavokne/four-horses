@@ -43,8 +43,7 @@ class Carousel {
     this.breakpoints = options.breakpoints || [
       { minWidth: 0, perPage: 1 },
       { minWidth: 600, perPage: 2 },
-      { minWidth: 960, perPage: 3 },
-      { minWidth: 1200, perPage: 4 },
+      { minWidth: 1240, perPage: 3 },
     ]
 
     this.loop = options.loop ?? false
